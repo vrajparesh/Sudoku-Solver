@@ -14,7 +14,7 @@ def show_image(img,title):
     cv2.namedWindow(title, cv2.WINDOW_NORMAL)
     cv2.resizeWindow(title, 450,450)
     cv2.imshow(title, img)
-    cv2.waitKey(50000)
+    cv2.waitKey(500)
     cv2.destroyAllWindows()
 
 #Image filter processing
@@ -29,7 +29,7 @@ def pre_process_image(img, skip_dilate=False):
 
 #Find image corners
 def findCorners(img):
-    contours, hierarchy = cv2.findContours(processed, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=cv2.contourArea, reverse=True)
     polygon = contours[0]
 
@@ -94,7 +94,8 @@ def infer_grid(img):
 def getEveryDigits(img,squares):
     labels = []
     centers = []
-    model = load_model('mnist_keras_cnn_model.h5')
+    paths = 'Sudoku_Solver/method'
+    model = load_model(os.path.join(paths , 'mnist_keras_cnn_model.h5'))
     img2=img.copy()
     show_image(img2,"TEST")
     height, width = img.shape[:2]
@@ -204,7 +205,7 @@ def writeImg(solved,old,img,squares):
         final = np.array(img2)
             
 
-  #show_image(final,"RESULT")
+#   show_image(final,"RESULT")
 #   cv2.imshow('img', final)
 #   cv2.waitKey(0)
   path = 'static'
