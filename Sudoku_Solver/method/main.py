@@ -207,25 +207,23 @@ def writeImg(solved,old,img,squares):
   #show_image(final,"RESULT")
 #   cv2.imshow('img', final)
 #   cv2.waitKey(0)
-  cv2.imwrite('image/solved.jpg', final)          
+  path = 'static'
+  cv2.imwrite(os.path.join(path , 'solved.jpg'), final)
+  return 'solved.jpg'
 #   cv2.waitKey(0)
 
 
 def solver(img):
   path = 'image3.jpg'
   img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
-#   show_image(img,"Original Image")
-  path = 'static'
-  # cv2.imwrite('static/solved.jpg', img) 
-  cv2.imwrite(os.path.join(path , 'solved.jpg'), img)
-  return ''
-#   processed = pre_process_image(img)
-#   corners = findCorners(processed)
-#   display_points(processed, corners)
+  
+  processed = pre_process_image(img)
+  corners = findCorners(processed)
+  display_points(processed, corners)
 
-#   cropped = crop_and_warp(processed, corners)
-#   squares = infer_grid(cropped)
+  cropped = crop_and_warp(processed, corners)
+  squares = infer_grid(cropped)
 
-#   old= getEveryDigits(cropped,squares)
-#   solved = solveGrid(copy.deepcopy(old))
-#   writeImg(solved,old,cropped,squares)
+  old= getEveryDigits(cropped,squares)
+  solved = solveGrid(copy.deepcopy(old))
+  return writeImg(solved,old,cropped,squares)

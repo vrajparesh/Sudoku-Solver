@@ -8,19 +8,14 @@ from .method.main import solver
 def home(request):
 
     if request.method == "POST":
-        # buffer = BytesIO()
         img = request.FILES.get("image")
        
         file = default_storage.save(img.name, img)
         
         solved = solver(file)
 
-        # url = base64.b64encode(solved)
-        # url = url.decode('utf-8')
-        url= ''
+        url= solved
 
-        # buffer.close()
         return render(request, "index.html", {"url":url})
-        # return HttpResponse(graph)
 
     return render(request, "index.html")
