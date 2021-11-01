@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop or Browse: File Upload | CodingNepal</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class='w3-padding-16 w3-xlarge w3-center'>
+        Upload image on left and get output on right 
+    </div>
+    <!-- <div class='w3-row' style='background: #5256ad;'>
+        <div class='w3-half'>
+            <div class='w3-padding'>
+                <div class="drag-area">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <button>Browse File</button>
+                    <form id='frm' action="/" method='post' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name='image' hidden required>
+                        <button>submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class='w3-half'>
+            <div class='w3-padding'>
+                <div id='image'>
+                    <img src="{{ url }}" 
+                    class="w3-image">
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <form method="post" action="#" enctype="multipart/form-data">
+        {% csrf_token %}
+		<input type="file" name="image" required/>
+		<div class="w3-section">
+			<button type="submit" name="submit" class="w3-input kel-hover-2 w3-black" style="width:80%">Upload</button>
+		</div>
+	</form>
+    <div>
+        <img src="data:image/png;base64,{{ url }}" alt="">
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

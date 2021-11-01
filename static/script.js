@@ -9,12 +9,12 @@ button.onclick = ()=>{
     input.click(); //if user click on the button then the input also clicked
 }
 
-input.addEventListener("change", function(){
-    //getting user select file and [0] this means if user select multiple files then we'll select only the first one
-    file = this.files[0];
-    dropArea.classList.add("active");
-    showFile(); //calling function
-});
+// input.addEventListener("change", function(){
+//     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
+//     file = this.files[0];
+//     dropArea.classList.add("active");
+//     showFile(); //calling function
+// });
 
 
 //If user Drag File Over DropArea
@@ -35,7 +35,8 @@ dropArea.addEventListener("drop", (event)=>{
     event.preventDefault(); //preventing from default behaviour
     //getting user select file and [0] this means if user select multiple files then we'll select only the first one
     file = event.dataTransfer.files[0];
-    showFile(file); //calling function
+    // showFile(file); //calling function
+    document.getElementById("frm").submit();
 });
 
 function showFile(file){
