@@ -10,7 +10,7 @@ def home(request):
     if request.method == "POST":
         img = request.FILES.get("image")
        
-        file = default_storage.save(img.name, img)
+        file = default_storage.save('file.jpg', img)
         
         solved = solver(file)
 

@@ -215,8 +215,7 @@ def writeImg(solved,old,img,squares):
 
 
 def solver(img):
-  path = 'image3.jpg'
-  img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+  img = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
   
   processed = pre_process_image(img)
   corners = findCorners(processed)
